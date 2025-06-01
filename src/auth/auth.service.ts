@@ -8,7 +8,10 @@ export class AuthService {
   async login(username: string) {
     const payload = { username };
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(payload, {
+        expiresIn: '1h',
+        secret: process.env.JWT_SECRET,
+      }),
     };
   }
 

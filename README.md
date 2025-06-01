@@ -36,6 +36,10 @@ npm run test:e2e
 npm run test:cov
 ```
 
+## 🧪 Test Coverage
+
+![Test Coverage](./coverage.png)
+
 ---
 
 ## ⚙️ Configurability & 12-Factor Compliance

@@ -7,6 +7,7 @@ describe('AuthService', () => {
   let jwtService: JwtService;
 
   beforeEach(async () => {
+    process.env.JWT_SECRET = 'test-secret';
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthService,
@@ -27,7 +28,10 @@ describe('AuthService', () => {
     it('should return an access token', async () => {
       const result = await service.login('john');
       expect(result).toEqual({ access_token: 'mocked.jwt.token' });
-      expect(jwtService.sign).toHaveBeenCalledWith({ username: 'john' });
+      expect(jwtService.sign).toHaveBeenCalledWith(
+        { username: 'john' },
+        { expiresIn: '1h', secret: process.env.JWT_SECRET },
+      );
     });
   });
 

@@ -46,7 +46,7 @@ export class MoviesController {
     return movie;
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('/year/:year')
   @ApiOperation({ summary: 'Get movies by year (paginated & sortable)' })
   @ApiQuery({ name: 'page', required: false })
@@ -56,7 +56,7 @@ export class MoviesController {
     return this.moviesService.getMoviesByYear(year, query.page, query.order);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('/genre/:genre')
   @ApiOperation({ summary: 'Get movies by genre (paginated)' })
   @ApiQuery({ name: 'page', required: false })
